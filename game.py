@@ -1,7 +1,6 @@
 import pygame
-import time
+import sys
 
-print(f"the quit event is {pygame.QUIT}")
 pygame.init()
 
 screen = pygame.display.set_mode((400, 400))
@@ -14,4 +13,6 @@ pygame.display.flip()
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            print("nice try")
+            print("thanks for playing!")
+            pygame.quit()
+            sys.exit()
