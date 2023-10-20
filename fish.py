@@ -8,19 +8,22 @@ class Fish(pygame.sprite.Sprite):
         self.image.set_colorkey((0, 0, 0))
         self.x = x
         self.y = y
-        print("I a, a brand new fish")
+        self.moving_left = False
+        self.moving_right = False
+        self.moving_up = False
+        self.moving_down = False
+        print("I am a brand new fish")
 
     def draw(self, screen):
         screen.blit(self.image, (self.x, self.y))
 
-    def move_left(self):
-        self.x -= 10
 
-    def move_right(self):
-        self.x += 10
-
-    def move_up(self):
-        self.y -= 10
-
-    def move_down(self):
-        self.y += 10
+    def update(self):
+        if self.moving_left:
+            self.x -= 2
+        elif self.moving_right:
+            self.x += 2
+        if self.moving_up:
+            self.y -= 2
+        elif self.moving_down:
+            self.y += 2
