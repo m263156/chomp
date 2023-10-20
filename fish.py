@@ -1,5 +1,5 @@
 import pygame
-
+from settings import *
 
 class Fish(pygame.sprite.Sprite):
 
@@ -27,3 +27,11 @@ class Fish(pygame.sprite.Sprite):
             self.y -= 2
         elif self.moving_down:
             self.y += 2
+        if self.x < 0:
+            self.x = 0
+        if self.x > SCREEN_WIDTH - TILE_SIZE:
+            self.x = SCREEN_WIDTH - TILE_SIZE
+        if self.y < 0:
+            self.y = 0
+        if self.y > SCREEN_HEIGHT - 3 * (TILE_SIZE):
+            self.y = SCREEN_HEIGHT - 3 * (TILE_SIZE)
