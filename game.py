@@ -2,6 +2,7 @@ import pygame
 import sys
 import random
 import fish
+import minnow
 from settings import *
 
 pygame.init()
@@ -17,9 +18,16 @@ seagrass.set_colorkey((0, 0, 0))
 game_font = pygame.font.Font("assets/fonts/Black_Crayon.ttf", TEXT_SIZE)
 
 my_fish = fish.Fish(200, 200)
+my_minnows = []
+for _ in range(NUM_MINNOWS):
+    x = random.randint(0, SCREEN_WIDTH)
+    y = random.randint(0, SCREEN_HEIGHT - 2 * TILE_SIZE)
+    my_minnows.append(minnow.Minnow(x, y))
+
 background = screen.copy()
 
 clock = pygame.time.Clock()
+
 
 def draw_background():
     background.fill(WATER_COLOR)
@@ -69,5 +77,7 @@ while True:
     screen.blit(background, (0, 0))
     my_fish.update()
     my_fish.draw(screen)
+    for my_minnow in my_minnows:
+        my_minnow.draw(screen)
     pygame.display.flip()
     clock.tick(60)
